@@ -112,7 +112,7 @@
       # ['Administrators', 'Remote Desktop Users']
     - { Desc: Only Admins and local service can change system time,
       ID: X, Name: SeSystemtimePrivilege, 
-      Users: ['Administrators', 'Local Service'] }
+      Users: ['Administrators', 'Local Service', 'Server Operators'] }
       # ['Administrators', 'Local Service']
     - { Desc: Restrict pagefile creation to Admins,
       ID: 'Y', Name: SeCreatePagefilePrivilege, 
