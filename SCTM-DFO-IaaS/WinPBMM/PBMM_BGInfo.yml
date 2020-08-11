@@ -1,0 +1,19 @@
+- name: Download bginfo exe
+  win_copy:
+    src: "BGInfo64.exe"
+    dest: C:\DFO-MPO\BGInfo\
+
+- name: Download bginfo template
+  win_copy:
+    src: "template_pbmm.bgi"
+    dest: C:\DFO-MPO\BGInfo\
+
+- name: Set the contents of a file
+  win_copy:
+    content: C:\DFO-MPO\BGInfo\Bginfo64.exe C:\DFO-MPO\BGInfo\template_pbmm.bgi /timer:0 /nolicprompt /silent
+    dest: C:\DFO-MPO\BGInfo\bginfo.bat
+
+- name: Create an application shortcut for an executable in PATH to your desktop
+  win_shortcut:
+    src: C:\DFO-MPO\BGInfo\bginfo.bat
+    dest: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\bginfo.lnk

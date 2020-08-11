@@ -1,0 +1,19 @@
+# == List Script ==
+# Includes all the tasks that fall under
+# the PBMM IA protocol requirements
+
+- name: IA-5 Maximum machine account password age to 24
+  win_regedit:
+    path: HKLM:\System\CurrentControlSet\Services\Netlogon\Parameters
+    name: MaximumPasswordAge
+    data: 24
+    type: dword
+    state: present
+
+- name: IA-5 Disconnect clients when logon hours expire - Enabled
+  win_regedit:
+    path: HKLM:\System\CurrentControlSet\Services\LanManServer\Parameters
+    name: EnableForcedLogoff
+    data: 1
+    type: dword
+    state: present

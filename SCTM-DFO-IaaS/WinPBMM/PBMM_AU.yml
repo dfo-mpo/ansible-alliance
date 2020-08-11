@@ -1,0 +1,27 @@
+# == List Script ==
+# Includes all the tasks that fall under
+# the PBMM AU protocol requirements
+
+- name: AU-3(2) Include command line in process creation events - Disabled
+  win_regedit:
+    path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit
+    name: ProcessCreationIncludeCmdLine_Enabled
+    data: 0
+    type: dword
+    state: present
+  
+- name: AU-5 Require case insensitivity for non-Windows subsystems - Enabled
+  win_regedit:
+    path: HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel
+    name: ObCaseInsensitive
+    data: 1
+    type: dword
+    state: present
+
+- name: AC-6 Admin Approval Mode for the Built-in Administrator account - Enabled
+  win_regedit:
+    path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+    name: FilterAdministratorToken
+    data: 1
+    type: dword
+    state: present

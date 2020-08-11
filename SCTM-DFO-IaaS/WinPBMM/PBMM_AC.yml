@@ -1,0 +1,35 @@
+# == List Script ==
+# Includes all the tasks that fall under
+# the PBMM AC protocol requirements
+
+- name: AC-2 Admin Approval Mode - Prompt for consent on the secure desktop
+  win_regedit:
+    path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+    name: ConsentPromptBehaviorAdmin
+    data: 2
+    type: dword
+    state: present
+
+- name: AC-4 Require NTLMv2 session security, Require 128-bit encryption
+  win_regedit:
+    path: HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0
+    name: NTLMMinClientSec
+    data: 0x20080000
+    type: dword
+    state: present
+
+- name: AC-6 Only elevate UIAccess applications that are installed in secure locations
+  win_regedit:
+    path: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+    name: EnableSecureUIAPaths
+    data: 1
+    type: dword
+    state: present
+
+- name: AC-6 Always install with elevated privileges - Disabled
+  win_regedit:
+    path: HKLM:\SOFTWARE\Policies\Microsoft\Windows\Installer
+    name: AlwaysInstallElevated
+    data: 0
+    type: dword
+    state: present
