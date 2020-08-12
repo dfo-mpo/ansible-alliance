@@ -1,6 +1,6 @@
 - name: Download bginfo exe
   win_copy:
-    src: "BGInfo64.exe"
+    src: "Bginfo64.exe"
     dest: C:\DFO-MPO\BGInfo\
 
 - name: Download bginfo template
