@@ -92,3 +92,21 @@
   - name: Execute ULL_SI_3 tasks
     include_tasks: WinUnclassed/ULL_SI_3.yml
     when: "'ULL_SI_3' not in SkipList"
+
+
+  # Antivirus & Defender log hash values
+  - name: Microsoft Antimalware - ThreatFileHashLogging
+    win_regedit:
+      path: HKLM:\SOFTWARE\Policies\Microsoft\Microsoft Antimalware
+      name: ThreatFileHashLogging
+      data: 00000001
+      type: dword
+      state: present
+
+  - name: Windows Defender - ThreatFileHashLogging
+    win_regedit:
+      path: HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender
+      name: ThreatFileHashLogging
+      data: 00000001
+      type: dword
+      state: present
