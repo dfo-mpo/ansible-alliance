@@ -105,3 +105,20 @@
 # PBMM BGInfo
   - name: Execute PBMM BGInfo tasks
     include_tasks: WinPBMM/PBMM_BGInfo.yml
+    
+# Antivirus & Defender log hash values
+  - name: Microsoft Antimalware - ThreatFileHashLogging
+    win_regedit:
+      path: HKLM:\SOFTWARE\Policies\Microsoft\Microsoft Antimalware
+      name: ThreatFileHashLogging
+      data: 00000001
+      type: dword
+      state: present
+
+  - name: Windows Defender - ThreatFileHashLogging
+    win_regedit:
+      path: HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender
+      name: ThreatFileHashLogging
+      data: 00000001
+      type: dword
+      state: present
