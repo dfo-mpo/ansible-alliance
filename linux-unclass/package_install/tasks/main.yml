@@ -4,8 +4,22 @@
     name: "{{ add_el7_packages }}"
     state: present
     update_cache: yes
-  when: ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
-
+  when: ansible_distribution == "RedHat" and ansible_distribution_major_version == "7"
+  
+- name: Installing additional packages on CentOS/RHEL (TBS compliance)
+  yum:
+    name: "{{ add_el7_packages }}"
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "RedHat" and ansible_distribution_major_version == "8"
+  
+- name: Installing additional packages on CentOS/RHEL (TBS compliance)
+  yum:
+    name: "{{ add_el7_packages }}"
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "CentOS"
+  
 - name: Installing additional packages on Ubuntu (TBS compliance)
   apt:
     name: "{{ add_deb_packages }}"
