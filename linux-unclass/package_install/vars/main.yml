@@ -5,6 +5,10 @@ add_el7_packages:
   - audit
   - ca-certificates
 
+add_redhat8_packages:
+  - audit
+  - ca-certificates
+
 add_deb_packages:
   - aptitude
   - ntp
