@@ -8,7 +8,7 @@
   
 - name: Installing additional packages on CentOS/RHEL (TBS compliance)
   yum:
-    name: "{{ add_el7_packages }}"
+    name: "{{ add_redhat8_packages }}"
     state: present
     update_cache: yes
   when: ansible_distribution == "RedHat" and ansible_distribution_major_version == "8"
