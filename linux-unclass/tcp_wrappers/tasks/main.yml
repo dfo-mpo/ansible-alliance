@@ -2,7 +2,7 @@
 - name: Check that the /etc/hosts.deny exists
   stat:
     path: /etc/hosts.deny
-    register: stat_result
+  register: stat_result
     
 - name: Setting ownership and permission bits on TCP Wrappers deny file (TBS compliance)
   file:
