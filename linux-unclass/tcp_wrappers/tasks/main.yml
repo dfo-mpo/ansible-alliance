@@ -1,10 +1,16 @@
 ---
+- name: Check that the /etc/hosts.deny exists
+  stat:
+    path: /etc/hosts.deny
+    register: stat_result
+    
 - name: Setting ownership and permission bits on TCP Wrappers deny file (TBS compliance)
   file:
     path: /etc/hosts.deny
     mode: 0644
     owner: root
     group: root
+  when: stat_result.stat.exists
 
 - name: Setting ownership and permission bits on TCP Wrappers allow file (TBS compliance)
   file:
@@ -12,6 +18,7 @@
     mode: 0644
     owner: root
     group: root
+  when: stat_result.stat.exists
 
 - name: Blocking all access to all services via TCP Wrappers (TBS compliance)
   blockinfile:
@@ -20,6 +27,7 @@
     state: present
     block: |
       ALL: ALL
+  when: stat_result.stat.exists
 
 - name: Allowing ssh-only access to the VM via TCP Wrappers (TBS compliance)
   blockinfile:
@@ -28,3 +36,4 @@
     state: present
     block: |
       sshd: ALL
+  when: stat_result.stat.exists
