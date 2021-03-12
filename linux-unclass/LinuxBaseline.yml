@@ -1,0 +1,69 @@
+---
+- hosts: linux:!FGCAC-A:!FGCAC-B:!FGCAEVM:!FGMCAEVM:!linuxjumpserver01:!aksEngineVersion:!dmp-openshift-rg:!OMSForwarder:!cloud-awx-vm:!odis-analytic-prod-u-vm1:!DatabricksEnvironment
+  remote_user: linuxadm
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+  roles:
+    - ssl_cert
+    - package_install
+    - package_remove
+    - banner_setup
+    - cron_permissions
+    - grub_permissions
+    - kernel_parameters
+    - misc_file_updates
+    - password_settings
+    - profile_updates
+    - ssh_updates 
+    - syslog_updates
+    - tcp_wrappers
+    - auditd_setup
+    - ntp_setup
+  tasks:
+    - name: Reset the value of directive ChallengeResponseAuthentication to yes
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^ChallengeResponseAuthentication'
+        line: 'ChallengeResponseAuthentication yes'
+      notify:
+         - restart_sshd
+         
+    - name: Set cloud-dfo-mpo.ca domain (Ubuntu).
+      lineinfile:
+        path: /etc/systemd/resolved.conf
+        regexp: '^Domains='
+        line: 'Domains=cloud-dfo-mpo.ca'
+      notify:
+         - restart_resolved
+      when:
+        - ansible_facts['distribution'] == "Ubuntu"
+    
+    - name: Set cloud-dfo-mpo.ca domain (CentOS).
+      lineinfile:
+        path: /etc/sysconfig/network
+        regexp: '^DOMAIN='
+        line: 'DOMAIN=cloud-dfo-mpo.ca'
+      notify:
+         - restart_network
+      when:
+        - ansible_facts['distribution'] == "CentOS"
+        
+  handlers:
+    - name: restart_sshd
+      service:
+        name: sshd
+        state: restarted
+        enabled: true
+        
+    - name: restart_resolved
+      service:
+        name: systemd-resolved
+        state: restarted
+        enabled: true
+        
+    - name: restart_network
+      service:
+        name: network
+        state: restarted
+        enabled: true
