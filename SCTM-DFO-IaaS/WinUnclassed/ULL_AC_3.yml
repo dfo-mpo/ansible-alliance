@@ -108,7 +108,7 @@
       # ['Administrators', 'Users', 'Backup Operators']
     - { Desc: Allow Admins and Remote users to log on with RDP,
       ID: W, Name: SeRemoteInteractiveLogonRight, 
-      Users: ['Administrators'] }
+      Users: ['Administrators', 'Remote Desktop Users'] }
       # ['Administrators', 'Remote Desktop Users']
     - { Desc: Only Admins and local service can change system time,
       ID: X, Name: SeSystemtimePrivilege, 
