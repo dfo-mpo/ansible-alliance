@@ -1,7 +1,4 @@
 ---
-- debug:
-    var: vmrole
-
 - set_fact:
     ubuntu_kernel_params_0:
       - name: net.ipv6.conf.all.accept_ra
