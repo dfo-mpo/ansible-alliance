@@ -1,67 +1,22 @@
 ---
-- name: Adding kernel parameters with value 1 to CentOS/RHEL (TBS compliance)
-  sysctl:
-    name: "{{ item.name }}"
-    value: 1
-    state: present
-    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
-    reload: yes
-  with_items:
-    - "{{ centos_kernel_params_1 }}"
-  when: ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
- 
-- name: Adding kernel parameters with value 0 to CentOS/RHEL (TBS compliance)
-  sysctl:
-    name: "{{ item.name }}"
-    value: 0
-    state: present
-    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
-    reload: yes
-  with_items:
-    - "{{ centos_kernel_params_0 }}"
-  when: ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
+- debug:
+    var: vmrole
 
-- name: Adding kernel parameters with value 2 to Ubuntu (TBS compliance)
-  sysctl:
-    name: "{{ item.name }}"
-    value: 2
-    state: present
-    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
-    reload: yes
-  with_items:
-    - "{{ ubuntu_kernel_params_2 }}"
-  when: ansible_distribution == "Ubuntu"
-  
-- name: Adding kernel parameters with value 1 to Ubuntu *net.ipv4.route.flush is not reported in sysctl -a so it always shows as changed.  Don't reload & and force OK as workaround.* (TBS compliance)
-  sysctl:
-    name: "{{ item.name }}"
-    value: '1'
-    state: present
-    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
-    reload: no
-  with_items:
-    - "{{ ubuntu_kernel_params_1_workaround }}"
-  when: ansible_distribution == "Ubuntu"
-  changed_when: false
-    
-- name: Adding kernel parameters with value 1 to Ubuntu (TBS compliance)
-  sysctl:
-    name: "{{ item.name }}"
-    value: 1
-    state: present
-    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
-    reload: yes
-  with_items:
-    - "{{ ubuntu_kernel_params_1 }}"
-  when: ansible_distribution == "Ubuntu"
-   
-- name: Adding kernel parameters with value 0 to Ubuntu (TBS compliance)
-  sysctl:
-    name: "{{ item.name }}"
-    value: 0
-    state: present
-    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
-    reload: yes
-  with_items:
-    - "{{ ubuntu_kernel_params_0 }}"
-  when: ansible_distribution == "Ubuntu"
+- set_fact:
+    ubuntu_kernel_params_0:
+      - name: net.ipv6.conf.all.accept_ra
+      - name: net.ipv6.conf.default.accept_ra
+      - name: net.ipv4.conf.all.secure_redirects
+      - name: net.ipv4.conf.default.secure_redirects
+      - name: net.ipv4.conf.all.accept_redirects
+      - name: net.ipv4.conf.default.accept_redirects
+      - name: net.ipv4.conf.all.accept_source_route
+      - name: net.ipv4.conf.default.accept_source_route
+      - name: fs.suid_dumpable
+  when: "'docker' in vmrole"
+
+- include: redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: debian.yml
+  when: ansible_os_family == 'Debian'
