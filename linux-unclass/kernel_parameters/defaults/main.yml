@@ -32,7 +32,6 @@ ubuntu_kernel_params_1:
   - name: net.ipv4.conf.all.rp_filter
 
 ubuntu_kernel_params_0:
-  - name: net.ipv4.ip_forward
   - name: net.ipv6.conf.all.accept_ra
   - name: net.ipv6.conf.default.accept_ra
   - name: net.ipv4.conf.all.secure_redirects
