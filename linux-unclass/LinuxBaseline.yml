@@ -5,21 +5,21 @@
   become: yes
   become_method: sudo
   roles:
-    - ../ansible-alliance/linux-unclass/ssl_cert
-    - ../ansible-alliance/linux-unclass/package_install
-    - ../ansible-alliance/linux-unclass/package_remove
-    - ../ansible-alliance/linux-unclass/banner_setup
-    - ../ansible-alliance/linux-unclass/cron_permissions
-    - ../ansible-alliance/linux-unclass/grub_permissions
-    - ../ansible-alliance/linux-unclass/kernel_parameters
-    - ../ansible-alliance/linux-unclass/misc_file_updates
-    - ../ansible-alliance/linux-unclass/password_settings
-    - ../ansible-alliance/linux-unclass/profile_updates
-    - ../ansible-alliance/linux-unclass/ssh_updates 
-    - ../ansible-alliance/linux-unclass/syslog_updates
-    - ../ansible-alliance/linux-unclass/tcp_wrappers
-    - ../ansible-alliance/linux-unclass/auditd_setup
-    - ../ansible-alliance/linux-unclass/ntp_setup
+    - ssl_cert
+    - package_install
+    - package_remove
+    - banner_setup
+    - cron_permissions
+    - grub_permissions
+    - kernel_parameters
+    - misc_file_updates
+    - password_settings
+    - profile_updates
+    - ssh_updates 
+    - syslog_updates
+    - tcp_wrappers
+    - auditd_setup
+    - ntp_setup
   tasks:
     - name: Reset the value of directive ChallengeResponseAuthentication to yes
       lineinfile:
