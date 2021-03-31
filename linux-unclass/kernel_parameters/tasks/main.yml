@@ -1,17 +1,4 @@
 ---
-- set_fact:
-    ubuntu_kernel_params_0:
-      - name: net.ipv6.conf.all.accept_ra
-      - name: net.ipv6.conf.default.accept_ra
-      - name: net.ipv4.conf.all.secure_redirects
-      - name: net.ipv4.conf.default.secure_redirects
-      - name: net.ipv4.conf.all.accept_redirects
-      - name: net.ipv4.conf.default.accept_redirects
-      - name: net.ipv4.conf.all.accept_source_route
-      - name: net.ipv4.conf.default.accept_source_route
-      - name: fs.suid_dumpable
-  when: "'vmrole_docker' in group_names"
-
 - include: redhat.yml
   when: ansible_os_family == 'RedHat'
 
