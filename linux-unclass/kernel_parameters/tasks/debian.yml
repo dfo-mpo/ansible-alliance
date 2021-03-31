@@ -28,6 +28,25 @@
     reload: yes
   with_items:
     - "{{ ubuntu_kernel_params_1 }}"
+    
+- name: Debian | Adding kernel parameters with value 1 (Docker exception)
+  sysctl:
+    name: "net.ipv4.ip_forward"
+    value: '1'
+    state: present
+    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
+    reload: yes
+  register: _ip_forward
+  when: "'vmrole_docker' in group_names"
+
+- name: Debian | Adding kernel parameters with value 0  (TBS compliance)
+  sysctl:
+    name: "net.ipv4.ip_forward"
+    value: '0'
+    state: present
+    sysctl_file: /etc/sysctl.d/10-kernel-hardening.conf
+    reload: yes
+  when: _ip_forward is skipped
 
 - name: Debian | Adding kernel parameters with value 0 (TBS compliance)
   sysctl:
