@@ -13,29 +13,20 @@
       
       Politique d’utilisation acceptable
       des réseaux électroniques du MPO (PUR MPO)"
-    LegalText: >
-      "I acknowledge that both the Treasury Board Secretariat Policy and the 
-      DFO Addendum on Acceptable Use of Electronic Networks apply to me as an 
-      authorized user of DFO electronic networks, including the Internet. I 
-      understand that I am obligated to access all DFO networks in a responsible 
-      and informed way., I am aware that DFO monitors electronic networks as 
-      indicated in the TBS Policy. As using these networks is a privilege, not a 
-      right, I recognize that access may be revoked or a range of other
-      disciplinary or legal actions may be taken for conduct that does not
-      conform to the above policies.
-      
-      ---------------------------------------------
-      
-      Je reconnais que, en tant qu’utilisateur autorisé des réseaux électroniques 
-      du MPO, y compris Internet, je dois respecter la politique du Secrétariat 
-      du Conseil du Trésor (SCT) sur l’utilisation acceptable des réseaux 
-      électroniques ainsi que le supplément du MPO. Je comprends que je dois agir 
-      de manière responsable et réfléchie lorsque j’utilise les réseaux
-      électroniques du MPO. Je sais que le MPO surveille l’usage des réseaux 
-      électroniques conformément à la politique du SCT. Comme il s’agit d’un 
-      privilège, et non d’un droit, je reconnais que l’accès aux réseaux peut 
-      m’être refusé et que le Ministère peut prendre des mesures disciplinaires 
-      ou judiciaires en cas d’infraction."
+    LegalText: > "The Treasury Board Secretariat (TBS) Policy on Service and Digital and the Directive on Service and Digital, serve as an integrated set of rules that articulate how Government of Canada organizations manage service delivery, information and data, information technology, and cyber security in the digital era. This includes rules to ensure employees use government electronic networks and devices in an acceptable and efficient manner to avoid negatively affecting the performance of networks and devices, impeding organizational operations and service delivery, and putting networks at risk.
+Fisheries and Oceans and Coast Guard employees are expected to limit usage of departmental network and devices to work-related and professional development activities.  Limited personal usage is also authorized outside of standard business hours (i.e. breaks and lunch) but must not be for financial gain, incur any additional costs for the department or interfere with the conduct of business.  Examples of acceptable and unacceptable network and device use are available in Appendix C and Appendix D of the Directive on Service and Digital. 
+It should also be noted that while the limited use of certain social media websites (e.g. Facebook, Twitter, LinkedIn, etc.) and media streaming websites (audio or video streaming) is authorized, those websites should however never be left opened all day as they consume considerable amounts of bandwidth which hinders the ability of other employees to conduct their work, and also represent a risk to network security.
+To assess network performance, protect government resources and ensure compliance with policies, the Department regularly monitors network activity indicators such as individual bandwidth usage, frequently visited sites, attempts to access blocked sites and file storage. Special monitoring may also be conducted without notice in instances where illegal or otherwise unacceptable use is suspected.
+Please address any concerns or questions relating to the content of this message to DFO IT Security at DFO.ITSEC-SECTI.MPO@dfo-mpo.gc.ca or 613-990-9069."
+
+-------------------------------------------------------------------------------
+
+"La Politique sur les services et le numérique et la Directive sur les services et le numérique constituent un ensemble intégré de règles qui décrit la façon dont les organisations du gouvernement du Canada gèrent la prestation de services, l’information et les données, la technologie de l’information et la cybersécurité à l’ère numérique. Cela comprend des règles visant à garantir que les employés utilisent les réseaux et les appareils électroniques du gouvernement d'une manière acceptable et efficace, afin d’éviter de nuire au rendement des réseaux et des dispositifs, d’entraver les activités de l’organisation et la prestation des services, et d’exposer les réseaux à des risques.
+Les employés de Pêches et Océans et de la Garde côtière doivent limiter l’utilisation du réseau et des dispositifs du Ministère aux activités liées au travail et au perfectionnement professionnel. Une utilisation personnelle limitée est également autorisée à des moments personnels (c.-à-d. les pauses et le diner), à condition qu’elle n’ait pas un but lucratif, qu’elle n’entraîne pas de coûts supplémentaires pour le Ministère et qu’elle n’interfère pas avec les opérations. Des exemples d’utilisation acceptable et inacceptable des dispositifs et des réseaux sont fournis à l’annexe C et à l’annexe D de la Directive sur les services et le numérique.
+Il convient également de noter que si l'utilisation limitée de certains sites web de médias sociaux (par exemple Facebook, Twitter, LinkedIn, etc.) et de sites web de diffusion de médias en continu (audio ou vidéo) est autorisée, ces sites ne doivent cependant jamais être laissés ouverts toute la journée car ils consomment des quantités considérables de bande passante, ce qui entrave la capacité des autres employés à effectuer leur travail, et représente également un risque pour la sécurité du réseau.
+Pour évaluer les performances du réseau, protéger les ressources gouvernementales et assurer le respect des politiques, le Ministère surveille régulièrement des indicateurs d'activité du réseau tels que l'utilisation individuelle de la bande passante, les sites fréquemment visités, les tentatives d'accès aux sites bloqués et le stockage de fichiers. Une surveillance spéciale peut également être effectuée sans préavis dans les cas où l'on soupçonne une utilisation illégale ou autrement inacceptable.
+Veuillez adresser toute préoccupation ou question relative au contenu de ce message à la sécurité informatique du MPO à DFO.ITSEC-SECTI.MPO@dfo-mpo.gc.ca ou au 613-990-9069."
+
 
 # Init task dictionaries
 - name: Set AC-8 regedit task dictionary
